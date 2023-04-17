@@ -1,4 +1,3 @@
-
 const express = require("express");
 require("dotenv").config();
 const cors = require("cors");
@@ -26,11 +25,13 @@ const openai = new OpenAIApi(configuration);
 
 app.post("/chat", async (req, res) => {
   const { prompt } = req.body;
+  console.log("prompt", prompt)
   const completion = await openai.createCompletion({
     model: "text-davinci-003",
     prompt: prompt,
     max_tokens: 2048,
   });
+  console.log('res', completion.data.choices[0].text)
   res.send(completion.data.choices[0].text);
 });
 
