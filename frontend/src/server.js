@@ -19,7 +19,9 @@ app.use(
 // Set up OpenAI endpoint
 
 const configuration = new Configuration({
-  apiKey: "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"
+  // apiKey: process.env.CHATBOT_KEY,
+  apiKey: "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"
+
 });
 
 const openai = new OpenAIApi(configuration);
