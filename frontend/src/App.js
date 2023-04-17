@@ -15,15 +15,15 @@ function App() {
 
     // communicate with API
     // post input value 'prompt' to API end point 
-    axios
-      .post("http://localhost:3030/chat", { prompt })
-      .then((res) => {
-        setResponse(res.data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+    // axios
+    //   .post("http://localhost:3030/chat", { prompt })
+    //   .then((res) => {
+    //     setResponse(res.data);
+    //     setLoading(false);
+    //   })
+    //   .catch((err) => {
+    //     console.error(err);
+    //   });
 
   };
 
