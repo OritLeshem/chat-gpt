@@ -8,6 +8,7 @@ const bodyParser = require("body-parser");
 const { Configuration, OpenAIApi } = require("openai");
 
 // Set up the server
+const app = express()
 
 app.use(express.json())
 app.use(bodyParser.json())
