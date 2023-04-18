@@ -1,21 +1,18 @@
-const express = require("express");
-require("dotenv").config();
-const cors = require("cors");
+const express = require('express')
+const cors = require('cors')
 const path = require('path')
-
+const cookieParser = require('cookie-parser')
 const bodyParser = require("body-parser");
 const { Configuration, OpenAIApi } = require("openai");
 
-// Set up the server
+require('dotenv').config()
 
-const app = express();
+const app = express()
+// Express App Config
+app.use(cookieParser())
+app.use(express.json())
 app.use(bodyParser.json());
-app.use(
-  cors({
-    origin: "http://localhost:3000",
-    credentials: true,
-  })
-);
+
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.resolve(__dirname, 'public')))
 } else {
@@ -25,7 +22,13 @@ if (process.env.NODE_ENV === 'production') {
   }
   app.use(cors(corsOptions))
 }
-// Set up OpenAI endpoint
+
+
+app.get('/**', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'))
+})
+
+// // Set up OpenAI endpoint
 
 const configuration = new Configuration({
   apiKey: process.env.CHATBOT_KEY
@@ -45,7 +48,6 @@ app.post("/chat", async (req, res) => {
   res.send(completion.data.choices[0].text);
 });
 
-// Start the server
 
 const port = 3030;
 app.listen(port, () => {
