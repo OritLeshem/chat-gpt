@@ -1,15 +1,15 @@
-const express = require("express");
-require("dotenv").config();
-const cors = require("cors");
+const express = require('express')
+const cors = require('cors')
 const path = require('path')
 const cookieParser = require('cookie-parser')
-
 const bodyParser = require("body-parser");
 const { Configuration, OpenAIApi } = require("openai");
 
-// Set up the server
+require('dotenv').config()
+
 const app = express()
 
+// Express App Config
 app.use(express.json())
 app.use(bodyParser.json())
 
@@ -30,8 +30,6 @@ app.get('/**', (req, res) => {
 
 // Set up OpenAI endpoint
 
-
-
 const configuration = new Configuration({
   apiKey: process.env.CHATBOT_KEY
 });
@@ -50,10 +48,8 @@ app.post("/chat", async (req, res) => {
   res.send(completion.data.choices[0].text);
 });
 
-// Start the server
-
 const port = process.env.PORT || 3030;
+
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
-  console.log(`http://localhost:${port}`);
 });
