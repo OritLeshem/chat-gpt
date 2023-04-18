@@ -1,34 +1,33 @@
-const express = require('express')
-const cors = require('cors')
+const express = require("express");
+require("dotenv").config();
+const cors = require("cors");
 const path = require('path')
 const cookieParser = require('cookie-parser')
+
 const bodyParser = require("body-parser");
 const { Configuration, OpenAIApi } = require("openai");
 
-require('dotenv').config()
+// Set up the server
 
-const app = express()
-
-// Express App Config
+const app = express();
 app.use(cookieParser())
-app.use(express.json())
-app.use(bodyParser.json())
 
+app.use(bodyParser.json());
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    credentials: true,
+  })
+);
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.resolve(__dirname, 'public')))
 } else {
   const corsOptions = {
-    origin: ['http://127.0.0.1:3000', 'http://localhost:3000', 'https://chat-gpt-az9j.onrender.com'],
-    credentials: true,
-    exposedHeaders: ['Access-Control-Allow-Origin'],
-  };
-  app.use(cors(corsOptions));
+    origin: ['http://127.0.0.1:3000', 'http://localhost:3000'],
+    credentials: true
+  }
+  app.use(cors(corsOptions))
 }
-
-app.get('/**', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'))
-})
-
 // Set up OpenAI endpoint
 
 const configuration = new Configuration({
@@ -49,8 +48,10 @@ app.post("/chat", async (req, res) => {
   res.send(completion.data.choices[0].text);
 });
 
-const port = process.env.PORT || 3030;
+// Start the server
 
+const port = process.env.PORT || 3030;
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
+  console.log(`http://localhost:${port}`);
 });
