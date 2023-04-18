@@ -18,9 +18,10 @@ if (process.env.NODE_ENV === 'production') {
 } else {
   const corsOptions = {
     origin: ['http://127.0.0.1:3000', 'http://localhost:3000', 'https://chat-gpt-az9j.onrender.com'],
-    credentials: true
-  }
-  app.use(cors(corsOptions))
+    credentials: true,
+    exposedHeaders: ['Access-Control-Allow-Origin'],
+  };
+  app.use(cors(corsOptions));
 }
 
 
