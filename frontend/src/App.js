@@ -16,7 +16,9 @@ function App() {
     // communicate with API
     // post input value 'prompt' to API end point 
     axios
-      .post("http://localhost:3030/chat", { prompt })
+      // .post("http://localhost:3030/chat", { prompt })
+      .post("https://chat-gpt-az9j.onrender.com/chat", { prompt })
+
       .then((res) => {
         setResponse(res.data);
         setLoading(false);
