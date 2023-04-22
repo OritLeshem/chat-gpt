@@ -19,7 +19,7 @@ function App() {
     // .post("https://chat-gpt-az9j.onrender.com", { prompt })
 
     axios
-      .post("https://chat-backend-kclg.onrender.com/chat", { prompt })
+      .post("https://chat-gpt-az9j.onrender.com/chat", { prompt })
       .then((res) => {
         setResponse(res.data);
         setLoading(false);
