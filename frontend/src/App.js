@@ -18,7 +18,7 @@ function App() {
     // .post("http://localhost:3030/chat", { prompt })
 
     axios
-      .post("https://chat-gpt-az9j.onrender.com", { prompt })
+      .post("https://chat-gpt-az9j.onrender.com/chat", { prompt })
       .then((res) => {
         setResponse(res.data);
         setLoading(false);
