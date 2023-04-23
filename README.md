@@ -1,6 +1,6 @@
 # chatGPT app
 
-Responsive chat connected to chatGPT api.
+Responsive chatGPT 
 [Live on render](https://chat-gpt-frontend.onrender.com/)
 
 
