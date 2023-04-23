@@ -29,8 +29,11 @@ body {
   border: 1px solid #005167;
   font-size: 22px;
   padding: 10px 15px;
-  flex: 1;
+  /* flex: 1; */
   border-radius: 4px;
+}
+input{
+  width: 75vw;
 }
 
 .wrapper form button {
