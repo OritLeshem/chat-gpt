@@ -47,7 +47,7 @@ function App() {
       <p className="response-area">
         {loading ? 'loading...' : response}
       </p>
-      <div className="footer">~ Orit Leshem ~</div>
+      {/* <div className="footer">~ Orit Leshem ~</div> */}
     </div>
   );
 }
