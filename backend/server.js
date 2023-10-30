@@ -16,7 +16,8 @@ app.use(bodyParser.json());
 
 // Set up CORS
 const corsOptions = {
-  origin: ['https://chat-gpt-frontend.onrender.com', 'http://127.0.0.1:3000', 'http://localhost:3000'],
+  origin: ['https://chat-gpt-frontend-j70n.onrender.com/', 'http://127.0.0.1:3000', 'http://localhost:3000'],
+  // origin: ['https://chat-gpt-frontend.onrender.com', 'http://127.0.0.1:3000', 'http://localhost:3000'],
   // origin: ['http://127.0.0.1:3000', 'http://localhost:3000', 'https://chat-gpt-az9j.onrender.com'],
 
   credentials: true,

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
-import CGLogo from './chatGPT.png';
+// import CGLogo from './chatGPT.png';
 import AppLogo from './app-logo.png';
 import './App.css';
 
@@ -20,7 +20,10 @@ function App() {
 
     axios
       // .post("http://localhost:3030/chat", { prompt })
-      .post("https://chat-gpt-az9j.onrender.com/chat", { prompt })
+      // .post("https://chat-gpt-az9j.onrender.com/chat", { prompt })
+      .post("https://https://chat-gpt-backend-4v5b.onrender.com//chat", { prompt })
+
+
       .then((res) => {
         setResponse(res.data);
         setLoading(false);
@@ -35,7 +38,7 @@ function App() {
     <div className="wrapper">
       <img src={AppLogo} alt="" className="app-logo" />
       <form onSubmit={handleSubmit}>
-        <img src={CGLogo} alt="" className={loading ? 'cg-logo loading' : 'cg-logo'} />
+        {/* <img src={CGLogo} alt="" className={loading ? 'cg-logo loading' : 'cg-logo'} /> */}
         <input
           type="text"
           value={prompt}
