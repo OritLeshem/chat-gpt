@@ -21,7 +21,7 @@ function App() {
     axios
       // .post("http://localhost:3030/chat", { prompt })
       // .post("https://chat-gpt-az9j.onrender.com/chat", { prompt })
-      .post("https://chat-gpt-backend-4v5b.onrender.com//chat", { prompt })
+      .post("https://chat-gpt-backend-4v5b.onrender.com/chat", { prompt })
 
 
       .then((res) => {
