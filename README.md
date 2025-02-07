@@ -1,7 +1,7 @@
 # chatGPT app
 
 Responsive chatGPT 
-[Live on render](https://chat-gpt-frontend.onrender.com/)
+[Live on render](https://chat-gpt-backend-x0yn.onrender.com/)
 
 
 Users can ask any question
