@@ -12,28 +12,20 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
-
-    // communicate with API
-    // post input value 'prompt' to API end point 
-    // .post("http://localhost:3030/chat", { prompt })
-    // .post("https://chat-gpt-az9j.onrender.com", { prompt })
+    setResponse('');
 
     axios
-      // .post("http://localhost:3030/chat", { prompt })
-      // .post("https://chat-gpt-az9j.onrender.com/chat", { prompt })
-      .post("https://chat-gpt-backend-4v5b.onrender.com/chat", { prompt })
-
-
+      .post("http://localhost:3030/chat", { prompt })
       .then((res) => {
-        setResponse(res.data);
+        setResponse(res.data.response || 'No response received');
         setLoading(false);
       })
       .catch((err) => {
-        console.error(err);
+        console.error('Error:', err);
+        setResponse(err.response?.data?.error || 'Failed to connect to server');
+        setLoading(false);
       });
-
   };
-
   return (
     <div className="wrapper">
       <img src={AppLogo} alt="" className="app-logo" />
