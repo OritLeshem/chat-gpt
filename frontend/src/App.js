@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import axios from 'axios';
-// import CGLogo from './chatGPT.png';
 import AppLogo from './app-logo.png';
 import './App.css';
 
@@ -9,13 +8,18 @@ function App() {
   const [response, setResponse] = useState('');
   const [loading, setLoading] = useState(false);
 
+  // Use the full URL in development, relative path in production
+  const API_URL = process.env.NODE_ENV === 'development'
+    ? 'http://localhost:3030/chat'
+    : '/chat';
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
     setResponse('');
 
     axios
-      .post("http://localhost:3030/chat", { prompt })
+      .post(API_URL, { prompt })
       .then((res) => {
         setResponse(res.data.response || 'No response received');
         setLoading(false);
@@ -26,11 +30,11 @@ function App() {
         setLoading(false);
       });
   };
+
   return (
     <div className="wrapper">
       <img src={AppLogo} alt="" className="app-logo" />
       <form onSubmit={handleSubmit}>
-        {/* <img src={CGLogo} alt="" className={loading ? 'cg-logo loading' : 'cg-logo'} /> */}
         <input
           type="text"
           value={prompt}
@@ -42,7 +46,6 @@ function App() {
       <p className="response-area">
         {loading ? 'loading...' : response}
       </p>
-      {/* <div className="footer">~ Orit Leshem ~</div> */}
     </div>
   );
 }
